@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="BRTFAppModule"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true">
+  <ViewUsage
+    Name="DepartmentsView1"
+    ViewObjectName="de.hah.blog.remotetaskflow.model.adfbc.views.DepartmentsView"/>
+  <ViewUsage
+    Name="EmployeesView1"
+    ViewObjectName="de.hah.blog.remotetaskflow.model.adfbc.views.EmployeesView"/>
+  <ViewUsage
+    Name="EmployeesView2"
+    ViewObjectName="de.hah.blog.remotetaskflow.model.adfbc.views.EmployeesView"/>
+  <ViewUsage
+    Name="DepartmentsView2"
+    ViewObjectName="de.hah.blog.remotetaskflow.model.adfbc.views.DepartmentsView"/>
+  <ViewUsage
+    Name="EmployeesView3"
+    ViewObjectName="de.hah.blog.remotetaskflow.model.adfbc.views.EmployeesView"/>
+  <ViewLinkUsage
+    Name="EmpManagerFkLink1"
+    ViewLinkObjectName="de.hah.blog.remotetaskflow.model.adfbc.views.links.EmpManagerFkLink"
+    SrcViewUsageName="de.hah.blog.remotetaskflow.model.adfbc.service.BRTFAppModule.EmployeesView1"
+    DstViewUsageName="de.hah.blog.remotetaskflow.model.adfbc.service.BRTFAppModule.EmployeesView2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="DeptMgrFkLink1"
+    ViewLinkObjectName="de.hah.blog.remotetaskflow.model.adfbc.views.links.DeptMgrFkLink"
+    SrcViewUsageName="de.hah.blog.remotetaskflow.model.adfbc.service.BRTFAppModule.EmployeesView1"
+    DstViewUsageName="de.hah.blog.remotetaskflow.model.adfbc.service.BRTFAppModule.DepartmentsView2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="EmpDeptFkLink1"
+    ViewLinkObjectName="de.hah.blog.remotetaskflow.model.adfbc.views.links.EmpDeptFkLink"
+    SrcViewUsageName="de.hah.blog.remotetaskflow.model.adfbc.service.BRTFAppModule.DepartmentsView1"
+    DstViewUsageName="de.hah.blog.remotetaskflow.model.adfbc.service.BRTFAppModule.EmployeesView3"
+    Reversed="false"/>
+</AppModule>
