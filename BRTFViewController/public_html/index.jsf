@@ -22,7 +22,17 @@
                 <af:panelGridLayout id="pgl2" dimensionsFrom="children">
                   <af:gridRow marginTop="5px" height="50px" id="gr3">
                     <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc3">
-                      <af:outputText value="Local Application" id="ot2" inlineStyle="font-size:x-large;"/>
+                      <af:panelGroupLayout id="pgl5" layout="vertical">
+                        <af:outputText value="Local Application" id="ot2" inlineStyle="font-size:x-large;"/>
+                        <af:panelGroupLayout id="pgl6">
+                          <af:button text="Cancel Edits" id="b1" actionListener="#{bindings.Rollback.execute}" disabled="#{!bindings.Rollback.enabled}"
+                                     immediate="true">
+                            <af:resetActionListener/>
+                          </af:button>
+                          <af:spacer width="10" height="10" id="s1"/>
+                          <af:button text="Commit Edits" id="b2" actionListener="#{bindings.Commit.execute}" disabled="#{!bindings.Commit.enabled}"/>
+                        </af:panelGroupLayout>
+                      </af:panelGroupLayout>
                     </af:gridCell>
                   </af:gridRow>
                   <af:gridRow marginTop="5px" marginBottom="5px" id="gr4">
@@ -33,7 +43,7 @@
                                 selectionListener="#{bindings.DepartmentsView1.collectionModel.makeCurrent}" rowSelection="single"
                                 fetchSize="#{bindings.DepartmentsView1.rangeSize}" filterModel="#{bindings.DepartmentsView1Query.queryDescriptor}"
                                 filterVisible="true" queryListener="#{bindings.DepartmentsView1Query.processQuery}" varStatus="vs" id="t1"
-                                editingMode="clickToEdit">
+                                editingMode="editAll">
                         <af:column sortProperty="#{bindings.DepartmentsView1.hints.DepartmentId.name}" filterable="true" sortable="true"
                                    headerText="#{bindings.DepartmentsView1.hints.DepartmentId.label}" id="c1">
                           <af:inputText value="#{row.bindings.DepartmentId.inputValue}" label="#{bindings.DepartmentsView1.hints.DepartmentId.label}"
@@ -77,6 +87,7 @@
                             <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentsView1.hints.LocationId.format}"/>
                           </af:inputText>
                         </af:column>
+                        <f:facet name="footer"/>
                       </af:table>
                     </af:gridCell>
                   </af:gridRow>
